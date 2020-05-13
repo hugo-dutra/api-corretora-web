@@ -1,6 +1,7 @@
 import { BaseEntity, Entity, PrimaryGeneratedColumn, Column, ManyToOne, OneToMany } from "typeorm";
 import { Perfil } from "../perfil/perfil.entity";
 import { Contrato } from "../contrato/contrato.entity";
+import { Corretora } from "../corretora/corretora.entity";
 
 @Entity()
 export class Usuario extends BaseEntity {
@@ -20,4 +21,6 @@ export class Usuario extends BaseEntity {
   perfil: Perfil;
   @OneToMany(type => Contrato, contrato => contrato.usuario, { eager: true })
   contratos: Contrato[]
+  @ManyToOne(type => Corretora, corretora => corretora.usuarios, { eager: false })
+  corretora: Corretora;
 }

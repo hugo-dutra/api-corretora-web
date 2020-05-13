@@ -17,8 +17,11 @@ import { ModalidadePlanoModule } from './modules/modalidade-plano/modalidade-pla
 import { GerenciadoraModule } from './modules/gerenciadora/gerenciadora.module';
 import { ContratoModule } from './modules/contrato/contrato.module';
 import { TipoContratoModule } from './modules/tipo-contrato/tipo-contrato.module';
+import { ClasseContratoModule } from './modules/classe-contrato/classe-contrato.module';
+import { ParcelaContratoModule } from './modules/parcela-contrato/parcela-contrato.module';
+import { TipoPagamentoModule } from './modules/tipo-pagamento/tipo-pagamento.module';
 
 @Module({
-  imports: [TypeOrmModule.forRoot(typeOrmConfig), ClienteModule, BeneficiarioModule, DependenteModule, TelefoneModule, ProprietarioTelefoneModule, UsuarioModule, PerfilModule, PermissaoModule, CorretoraModule, OperadoraModule, ModalidadePlanoModule, GerenciadoraModule, ContratoModule, TipoContratoModule],
+  imports: [TypeOrmModule.forRoot(typeOrmConfig), ClienteModule, BeneficiarioModule, DependenteModule, TelefoneModule, ProprietarioTelefoneModule, UsuarioModule, PerfilModule, PermissaoModule, CorretoraModule, OperadoraModule, ModalidadePlanoModule, GerenciadoraModule, ContratoModule, TipoContratoModule, ClasseContratoModule, ParcelaContratoModule, TipoPagamentoModule],
 })
 export class AppModule { }
