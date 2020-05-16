@@ -17,6 +17,8 @@ export class Corretora extends BaseEntity {
   nome: string;
   @Column({ length: 500, name: 'cta_email_txt' })
   email: string
+  @Column({ length: 25, name: 'cta_telefone_txt' })
+  telefone: string
   /* RELACIONAMENTOS */
   @OneToMany(type => Cliente, cliente => cliente.corretora, { eager: true })
   clientes: Cliente[]

@@ -9,6 +9,8 @@ export class ParcelaContrato extends BaseEntity {
   id: number;
   @Column({ name: 'pac_valor_num' })
   valor: number;
+  @Column({ name: 'pac_data_vendimento_dte' })
+  pac_data_vendimento: Date;
   /* RELACIONAMENTOS */
   @ManyToOne(type => Contrato, contrato => contrato.parcelasContrato, { eager: false })
   @JoinColumn({ name: 'ctr_id_int' })

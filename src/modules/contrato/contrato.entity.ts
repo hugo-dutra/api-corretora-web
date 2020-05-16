@@ -15,6 +15,14 @@ export class Contrato extends BaseEntity {
   id: number;
   @Column({ name: 'ctr_valor_num' })
   valor: number;
+  @Column({ name: 'ctr_numero_contrato_txt' })
+  ctr_numero_contrato: string;
+  @Column({ name: 'ctr_inicio_vigencia_dte' })
+  ctr_inicio_vigencia: Date;
+  @Column({ name: 'ctr_valor_desconto_num' })
+  ctr_valor_desconto: number;
+  @Column({ name: 'ctr_data_assinatura_contrato_dte' })
+  ctr_data_assinatura_contrato: Date;
   /* RELACIONAMENTOS */
   @ManyToOne(type => Usuario, usuario => usuario.contratos, { eager: false })
   @JoinColumn({ name: 'usr_id_int' })

@@ -23,6 +23,8 @@ export class Cliente extends BaseEntity {
   uf: string;
   @Column({ name: 'clt_email_txt', length: 500 })
   email: string;
+  @Column({ name: 'clt_cpf_cnpj_txt', length: 50 })
+  clt_cpf_cnpj: string;
   /* RELACIONAMENTOS */
   @ManyToOne(type => Usuario, usuario => usuario.clientes, { eager: false })
   @JoinColumn({ name: 'usr_id_int' })

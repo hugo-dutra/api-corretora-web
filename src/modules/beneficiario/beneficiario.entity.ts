@@ -11,6 +11,10 @@ export class Beneficiario extends BaseEntity {
   nome: string;
   @Column({ length: 500, name: 'bnf_email_txt' })
   emaio: string;
+  @Column({ nullable: false, name: 'bnf_data_nascimento_dte' })
+  bnf_data_nascimento: Date;
+  @Column({ name: 'bnf_cpf_txt', length: 50 })
+  bnf_cpf: string;
   /* RELACIONAMENTOS */
   @ManyToOne(type => Cliente, cliente => cliente.beneficiarios, { eager: false })
   @JoinColumn({ name: 'clt_id_int' })
