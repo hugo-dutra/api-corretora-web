@@ -6,6 +6,7 @@ import { Cliente } from "../cliente/cliente.entity";
 import { Operadora } from "../operadora/operadora.entity";
 import { Gerenciadora } from "../gerenciadora/gerenciadora.entity";
 import { Usuario } from '../usuario/usuario.entity';
+import { Administradora } from '../administradora/administradora.entity';
 
 @Entity('corretora_cta')
 export class Corretora extends BaseEntity {
@@ -30,6 +31,8 @@ export class Corretora extends BaseEntity {
   @OneToMany(type => TipoPagamento, tipoPagamento => tipoPagamento.corretora, { eager: true })
   tiposPagamento: TipoPagamento[]
   @OneToMany(type => Usuario, usuario => usuario.corretora, { eager: true })
-  usuarios: Usuario[]
+  usuarios: Usuario[];
+  @OneToMany(type => Administradora, administradora => administradora.corretora, { eager: true })
+  administradoras: Administradora[];
 
 }

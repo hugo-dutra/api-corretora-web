@@ -21,6 +21,7 @@ import { ClasseContratoModule } from './modules/classe-contrato/classe-contrato.
 import { ParcelaContratoModule } from './modules/parcela-contrato/parcela-contrato.module';
 import { TipoPagamentoModule } from './modules/tipo-pagamento/tipo-pagamento.module';
 import { PerfilPermissaoModule } from './modules/perfil-permissao/perfil-permissao.module';
+import { AdministradoraModule } from './modules/administradora/administradora.module';
 
 @Module({
   imports: [
@@ -42,6 +43,7 @@ import { PerfilPermissaoModule } from './modules/perfil-permissao/perfil-permiss
     ClasseContratoModule,
     ParcelaContratoModule,
     TipoPagamentoModule,
-    PerfilPermissaoModule],
+    PerfilPermissaoModule,
+    AdministradoraModule],
 })
 export class AppModule { }

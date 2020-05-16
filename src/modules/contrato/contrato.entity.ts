@@ -1,3 +1,4 @@
+import { Administradora } from './../administradora/administradora.entity';
 import { ParcelaContrato } from './../parcela-contrato/parcela-contrato.entity';
 import { ClasseContrato } from './../classe-contrato/classe-contrato.entity';
 import { Gerenciadora } from './../gerenciadora/gerenciadora.entity';
@@ -33,6 +34,9 @@ export class Contrato extends BaseEntity {
   @ManyToOne(type => ClasseContrato, classeContrato => classeContrato.contratos, { eager: false })
   @JoinColumn({ name: 'clc_id_int' })
   classeContrato: ClasseContrato;
+  @ManyToOne(type => Administradora, administradora => administradora.contratos, { eager: false })
+  @JoinColumn({ name: 'adm_id_int' })
+  administradora: Administradora;
   @OneToMany(type => ParcelaContrato, parcelaContrato => parcelaContrato.contrato, { eager: true })
   @JoinColumn({ name: 'pac_id_int' })
   parcelasContrato: ParcelaContrato[];
