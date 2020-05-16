@@ -2,6 +2,7 @@ import { BaseEntity, Entity, PrimaryGeneratedColumn, Column, ManyToOne, OneToMan
 import { Perfil } from "../perfil/perfil.entity";
 import { Contrato } from "../contrato/contrato.entity";
 import { Corretora } from "../corretora/corretora.entity";
+import { Cliente } from "../cliente/cliente.entity";
 
 @Entity('usuario_usr')
 export class Usuario extends BaseEntity {
@@ -17,6 +18,8 @@ export class Usuario extends BaseEntity {
   @Column({ length: 250, nullable: false, name: 'usr_salt_txt' })
   salt: string;
   /* RELACIONAMENTOS */
+  @OneToMany(type => Cliente, cliente => cliente.usuario, { eager: true })
+  clientes: Cliente[];
   @ManyToOne(type => Perfil, perfil => perfil.usuarios, { eager: false })
   @JoinColumn({ name: 'per_id_int' })
   perfil: Perfil;

@@ -9,6 +9,8 @@ export class Beneficiario extends BaseEntity {
   id: number;
   @Column({ length: 500, nullable: false, name: 'bnf_nome_txt' })
   nome: string;
+  @Column({ length: 500, name: 'bnf_email_txt' })
+  emaio: string;
   /* RELACIONAMENTOS */
   @ManyToOne(type => Cliente, cliente => cliente.beneficiarios, { eager: false })
   @JoinColumn({ name: 'clt_id_int' })
