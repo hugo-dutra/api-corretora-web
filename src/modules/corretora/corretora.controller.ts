@@ -8,6 +8,10 @@ import { DeleteResult } from 'typeorm';
 export class CorretoraController {
   constructor(private corretoraService: CorretoraService) { }
 
+  /**
+   * Nova corretora
+   * @param corretoraDto Objeto a ser gravado
+   */
   @Post()
   public novaCorretora(@Body(ValidationPipe) corretoraDto: CorretoraDto): Promise<Corretora> {
     return new Promise((resolve, reject) => {
@@ -19,16 +23,29 @@ export class CorretoraController {
     });
   }
 
+  /**
+   * Listar dados da corretora por id
+   * @param id Id da corretora
+   */
   @Get('/:id')
-  public pegarCorretoraPorId(@Param('id') id: number): Promise<Corretora> {
+  public listarDadosCorretoraPorId(@Param('id') id: number): Promise<Corretora> {
     return this.corretoraService.listarDadosCorretoraPorId(id);
   }
 
+  /**
+   * Altera os dados da corretora
+   * @param id Id da corretora
+   * @param corretoraDto Objeto a ser gravado
+   */
   @Patch('/:id')
   public alterarCorretora(@Param('id') id: number, @Body(ValidationPipe) corretoraDto: CorretoraDto): Promise<Corretora> {
     return this.corretoraService.alterarCorretora(id, corretoraDto);
   }
 
+  /**
+   * Apaga uma corretora
+   * @param id Id da corretora
+   */
   @Delete('/:id')
   public apagarCorretora(@Param('id') id: number): Promise<DeleteResult> {
     return this.corretoraService.apagarCorretora(id);
@@ -41,5 +58,4 @@ export class CorretoraController {
   public listarCorretoras(): Promise<Corretora[]> {
     return this.corretoraService.listarCorretoras()
   } */
-
 }
