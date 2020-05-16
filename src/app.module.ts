@@ -20,8 +20,28 @@ import { TipoContratoModule } from './modules/tipo-contrato/tipo-contrato.module
 import { ClasseContratoModule } from './modules/classe-contrato/classe-contrato.module';
 import { ParcelaContratoModule } from './modules/parcela-contrato/parcela-contrato.module';
 import { TipoPagamentoModule } from './modules/tipo-pagamento/tipo-pagamento.module';
+import { PerfilPermissaoModule } from './modules/perfil-permissao/perfil-permissao.module';
 
 @Module({
-  imports: [TypeOrmModule.forRoot(typeOrmConfig), ClienteModule, BeneficiarioModule, DependenteModule, TelefoneModule, ProprietarioTelefoneModule, UsuarioModule, PerfilModule, PermissaoModule, CorretoraModule, OperadoraModule, ModalidadePlanoModule, GerenciadoraModule, ContratoModule, TipoContratoModule, ClasseContratoModule, ParcelaContratoModule, TipoPagamentoModule],
+  imports: [
+    TypeOrmModule.forRoot(typeOrmConfig),
+    ClienteModule,
+    BeneficiarioModule,
+    DependenteModule,
+    TelefoneModule,
+    ProprietarioTelefoneModule,
+    UsuarioModule,
+    PerfilModule,
+    PermissaoModule,
+    CorretoraModule,
+    OperadoraModule,
+    ModalidadePlanoModule,
+    GerenciadoraModule,
+    ContratoModule,
+    TipoContratoModule,
+    ClasseContratoModule,
+    ParcelaContratoModule,
+    TipoPagamentoModule,
+    PerfilPermissaoModule],
 })
 export class AppModule { }

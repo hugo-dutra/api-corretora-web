@@ -1,18 +1,19 @@
-import { BaseEntity, Entity, PrimaryGeneratedColumn, Column, OneToMany, ManyToMany, JoinTable } from "typeorm";
+import { PerfilPermissao } from './../perfil-permissao/perfil-permissao.entity';
+import { BaseEntity, Entity, PrimaryGeneratedColumn, Column, OneToMany, ManyToMany, JoinTable, JoinColumn } from "typeorm";
 import { Usuario } from "../usuario/usuario.entity";
 import { Permissao } from "../permissao/permissao.entity";
 
-@Entity()
+@Entity('perfil_per')
 export class Perfil extends BaseEntity {
-  @PrimaryGeneratedColumn()
+  @PrimaryGeneratedColumn({ name: 'per_id_int' })
   id: number;
-  @Column({ length: 250, nullable: false })
+  @Column({ length: 250, nullable: false, name: 'per_nome_txt' })
   nome: string;
   @OneToMany(type => Usuario, usuario => usuario.perfil, { eager: true })
   usuarios: Usuario[];
+  @OneToMany(type => PerfilPermissao, perfilPermissao => perfilPermissao.perfil, { eager: false })
+  perfisPermissoes: PerfilPermissao[];
 
-  @ManyToMany(type => Permissao)
-  @JoinTable()
-  permissoes: Permissao[]
+
 
 }

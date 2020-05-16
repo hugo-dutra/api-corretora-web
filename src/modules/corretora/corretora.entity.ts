@@ -7,14 +7,14 @@ import { Operadora } from "../operadora/operadora.entity";
 import { Gerenciadora } from "../gerenciadora/gerenciadora.entity";
 import { Usuario } from '../usuario/usuario.entity';
 
-@Entity()
+@Entity('corretora_cta')
 export class Corretora extends BaseEntity {
   /* CAMPOS */
-  @PrimaryGeneratedColumn()
+  @PrimaryGeneratedColumn({ name: 'cta_id_int' })
   id: number;
-  @Column({ length: 250, nullable: false })
+  @Column({ length: 250, nullable: false, name: 'cta_nome_txt' })
   nome: string;
-  @Column({ length: 500 })
+  @Column({ length: 500, name: 'cta_email_txt' })
   email: string
   /* RELACIONAMENTOS */
   @OneToMany(type => Cliente, cliente => cliente.corretora, { eager: true })

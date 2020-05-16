@@ -1,17 +1,15 @@
 import { Beneficiario } from '../beneficiario/beneficiario.entity';
+import { BaseEntity, Entity, PrimaryGeneratedColumn, Column, ManyToOne, JoinColumn } from "typeorm";
 
-import { BaseEntity, Entity, PrimaryGeneratedColumn, Column, ManyToOne } from "typeorm";
-
-@Entity()
+@Entity('dependente_dpd')
 export class Dependente extends BaseEntity {
   /* CAMPOS */
-  @PrimaryGeneratedColumn()
+  @PrimaryGeneratedColumn({ name: 'dpd_id_int' })
   id: number;
-  @Column({ length: 500, nullable: false })
+  @Column({ length: 500, nullable: false, name: 'dpd_nome_txt' })
   nome: string;
-  @Column()
-  beneficiarioId: number;
   /* RELACIONAMENTOS */
   @ManyToOne(type => Beneficiario, beneficiario => beneficiario.dependentes, { eager: false })
+  @JoinColumn({ name: 'bnf_id_int' })
   beneficiario: Beneficiario;
 }
