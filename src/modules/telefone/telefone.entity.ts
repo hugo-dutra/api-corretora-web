@@ -11,6 +11,8 @@ export class Telefone extends BaseEntity {
   telefone: string;
   @Column({ nullable: false, name: 'tlf_whatsapp_bin', default: false })
   tlf_whatsapp: Boolean;
+  @Column({ name: 'tlf_observacao_txt' })
+  tlf_observacao: string;
   /* RELACIONAMENTOS */
   @ManyToOne(type => Cliente, cliente => cliente.telefones, { eager: false })
   @JoinColumn({ name: 'clt_id_int' })

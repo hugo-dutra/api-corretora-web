@@ -1,12 +1,12 @@
 import { Administradora } from './../administradora/administradora.entity';
 import { ParcelaContrato } from './../parcela-contrato/parcela-contrato.entity';
 import { ClasseContrato } from './../classe-contrato/classe-contrato.entity';
-import { Gerenciadora } from './../gerenciadora/gerenciadora.entity';
 import { ModalidadePlano } from './../modalidade-plano/modalidade-plano.entity';
 import { BaseEntity, Entity, PrimaryGeneratedColumn, Column, ManyToOne, OneToMany, JoinColumn } from "typeorm";
 import { Usuario } from "../usuario/usuario.entity";
 import { Cliente } from '../cliente/cliente.entity';
 import { TipoContrato } from '../tipo-contrato/tipo-contrato.entity';
+import { Comissao } from '../comissao/comissao.entity';
 
 @Entity('contrato_ctr')
 export class Contrato extends BaseEntity {
@@ -30,9 +30,6 @@ export class Contrato extends BaseEntity {
   @ManyToOne(Type => ModalidadePlano, modalidadePlano => modalidadePlano.contratos, { eager: false })
   @JoinColumn({ name: 'mop_id_int' })
   modalidadePlano: ModalidadePlano;
-  @ManyToOne(type => Gerenciadora, gerenciadora => gerenciadora.contratos, { eager: false })
-  @JoinColumn({ name: 'ger_id_int' })
-  gerenciadora: Gerenciadora;
   @ManyToOne(type => Cliente, cliente => cliente.contratos, { eager: false })
   @JoinColumn({ name: 'clt_id_int' })
   cliente: Cliente;
@@ -46,7 +43,7 @@ export class Contrato extends BaseEntity {
   @JoinColumn({ name: 'adm_id_int' })
   administradora: Administradora;
   @OneToMany(type => ParcelaContrato, parcelaContrato => parcelaContrato.contrato, { eager: true })
-  @JoinColumn({ name: 'pac_id_int' })
   parcelasContrato: ParcelaContrato[];
-
+  @OneToMany(type => Comissao, comissao => comissao.contrato, { eager: true })
+  comissoes: Comissao[];
 }

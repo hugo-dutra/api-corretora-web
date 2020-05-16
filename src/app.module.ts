@@ -14,7 +14,6 @@ import { PermissaoModule } from './modules/permissao/permissao.module';
 import { CorretoraModule } from './modules/corretora/corretora.module';
 import { OperadoraModule } from './modules/operadora/operadora.module';
 import { ModalidadePlanoModule } from './modules/modalidade-plano/modalidade-plano.module';
-import { GerenciadoraModule } from './modules/gerenciadora/gerenciadora.module';
 import { ContratoModule } from './modules/contrato/contrato.module';
 import { TipoContratoModule } from './modules/tipo-contrato/tipo-contrato.module';
 import { ClasseContratoModule } from './modules/classe-contrato/classe-contrato.module';
@@ -22,6 +21,8 @@ import { ParcelaContratoModule } from './modules/parcela-contrato/parcela-contra
 import { TipoPagamentoModule } from './modules/tipo-pagamento/tipo-pagamento.module';
 import { PerfilPermissaoModule } from './modules/perfil-permissao/perfil-permissao.module';
 import { AdministradoraModule } from './modules/administradora/administradora.module';
+import { ComissaoModule } from './modules/comissao/comissao.module';
+import { TipoComissaoModule } from './modules/tipo-comissao/tipo-comissao.module';
 
 @Module({
   imports: [
@@ -37,13 +38,14 @@ import { AdministradoraModule } from './modules/administradora/administradora.mo
     CorretoraModule,
     OperadoraModule,
     ModalidadePlanoModule,
-    GerenciadoraModule,
     ContratoModule,
     TipoContratoModule,
     ClasseContratoModule,
     ParcelaContratoModule,
     TipoPagamentoModule,
     PerfilPermissaoModule,
-    AdministradoraModule],
+    AdministradoraModule,
+    ComissaoModule,
+    TipoComissaoModule],
 })
 export class AppModule { }
