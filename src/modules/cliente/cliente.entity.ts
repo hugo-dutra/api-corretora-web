@@ -26,16 +26,16 @@ export class Cliente extends BaseEntity {
   @Column({ name: 'clt_cpf_cnpj_txt', length: 50 })
   clt_cpf_cnpj: string;
   /* RELACIONAMENTOS */
-  @ManyToOne(type => Usuario, usuario => usuario.clientes, { eager: false })
+  @ManyToOne(type => Usuario, usuario => usuario.clientes)
   @JoinColumn({ name: 'usr_id_int' })
   usuario: Usuario;
-  @OneToMany(type => Beneficiario, beneficiario => beneficiario.cliente, { eager: true })
+  @OneToMany(type => Beneficiario, beneficiario => beneficiario.cliente)
   beneficiarios: Beneficiario[]
-  @OneToMany(type => Telefone, telefone => telefone.cliente, { eager: true })
+  @OneToMany(type => Telefone, telefone => telefone.cliente)
   telefones: Telefone[];
-  @OneToMany(type => Contrato, contrato => contrato.cliente, { eager: true })
+  @OneToMany(type => Contrato, contrato => contrato.cliente)
   contratos: Contrato[];
-  @ManyToOne(type => Corretora, corretora => corretora.clientes, { eager: false })
+  @ManyToOne(type => Corretora, corretora => corretora.clientes)
   @JoinColumn({ name: 'cta_id_int' })
   corretora: Corretora;
 }

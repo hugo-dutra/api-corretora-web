@@ -9,13 +9,13 @@ export class Dependente extends BaseEntity {
   @Column({ length: 500, nullable: false, name: 'dpd_nome_txt' })
   nome: string;
   @Column({ nullable: false, name: 'dpd_data_nascimento_dte' })
-  dpd_data_nascimento: Date;
+  data_nascimento: Date;
   @Column({ name: 'dpd_email_txt' })
-  dpd_email: string;
+  email: string;
   @Column({ name: 'dpd_cpf_txt', length: 50 })
-  dpd_cpf: string;
+  cpf: string;
   /* RELACIONAMENTOS */
-  @ManyToOne(type => Beneficiario, beneficiario => beneficiario.dependentes, { eager: false })
+  @ManyToOne(type => Beneficiario, beneficiario => beneficiario.dependentes)
   @JoinColumn({ name: 'bnf_id_int' })
   beneficiario: Beneficiario;
 }

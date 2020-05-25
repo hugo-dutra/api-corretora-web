@@ -9,12 +9,12 @@ export class ClasseContrato extends BaseEntity {
   id: number;
   @Column({ length: 250, nullable: false, name: 'clc_nome_txt' })
   nome: string;
-  @ManyToOne(type => TipoContrato, tipoContrato => tipoContrato.classeContrato, { eager: false })
+  @ManyToOne(type => TipoContrato, tipoContrato => tipoContrato.classeContrato)
   @JoinColumn({ name: 'tco_id_int' })
   tiposContratos: TipoContrato[];
-  @OneToMany(type => Contrato, contrato => contrato.classeContrato, { eager: false })
+  @OneToMany(type => Contrato, contrato => contrato.classeContrato)
   contratos: Contrato[];
-  @ManyToOne(type => Corretora, corretora => corretora.classesContrato, { eager: false })
+  @ManyToOne(type => Corretora, corretora => corretora.classesContrato)
   @JoinColumn({ name: 'cta_id_int' })
   corretora: Corretora;
 

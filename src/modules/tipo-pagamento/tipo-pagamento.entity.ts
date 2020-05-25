@@ -10,9 +10,9 @@ export class TipoPagamento extends BaseEntity {
   @Column({ length: 250, nullable: false, name: 'tip_nome_txt' })
   nome: string;
   /* RELACIONAMENTOS */
-  @OneToMany(type => ParcelaContrato, parcelaContrato => parcelaContrato.tipoPagamento, { eager: true })
+  @OneToMany(type => ParcelaContrato, parcelaContrato => parcelaContrato.tipoPagamento)
   parcelasContrato: ParcelaContrato[]
-  @ManyToOne(type => Corretora, corretora => corretora.tiposPagamento, { eager: false })
+  @ManyToOne(type => Corretora, corretora => corretora.tiposPagamento)
   @JoinColumn({ name: 'cta_id_int' })
   corretora: Corretora;
 }

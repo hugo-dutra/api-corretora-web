@@ -33,7 +33,7 @@ export class CorretoraService {
    */
   public listarDadosCorretoraPorId(id: number): Promise<Corretora> {
     return new Promise((resolve, reject) => {
-      this.corretoraRepository.findOne({ id: id }).then((corretora: Corretora) => {
+      this.corretoraRepository.findOne(id).then((corretora: Corretora) => {
         resolve(corretora);
       }).catch((reason: any) => {
         reject(reason);

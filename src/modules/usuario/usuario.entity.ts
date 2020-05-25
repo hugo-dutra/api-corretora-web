@@ -18,14 +18,14 @@ export class Usuario extends BaseEntity {
   @Column({ length: 250, nullable: false, name: 'usr_salt_txt' })
   salt: string;
   /* RELACIONAMENTOS */
-  @OneToMany(type => Cliente, cliente => cliente.usuario, { eager: true })
+  @OneToMany(type => Cliente, cliente => cliente.usuario)
   clientes: Cliente[];
-  @ManyToOne(type => Perfil, perfil => perfil.usuarios, { eager: false })
+  @ManyToOne(type => Perfil, perfil => perfil.usuarios)
   @JoinColumn({ name: 'per_id_int' })
   perfil: Perfil;
-  @OneToMany(type => Contrato, contrato => contrato.usuario, { eager: true })
+  @OneToMany(type => Contrato, contrato => contrato.usuario)
   contratos: Contrato[]
-  @ManyToOne(type => Corretora, corretora => corretora.usuarios, { eager: false })
+  @ManyToOne(type => Corretora, corretora => corretora.usuarios)
   @JoinColumn({ name: 'cta_id_int' })
   corretora: Corretora;
 }

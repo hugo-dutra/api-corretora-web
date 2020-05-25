@@ -7,6 +7,7 @@ import { Cliente } from "../cliente/cliente.entity";
 import { Operadora } from "../operadora/operadora.entity";
 import { Usuario } from '../usuario/usuario.entity';
 import { Administradora } from '../administradora/administradora.entity';
+import { Boleto } from '../boleto/boleto.entity';
 
 @Entity('corretora_cta')
 export class Corretora extends BaseEntity {
@@ -20,21 +21,23 @@ export class Corretora extends BaseEntity {
   @Column({ length: 25, name: 'cta_telefone_txt' })
   telefone: string
   /* RELACIONAMENTOS */
-  @OneToMany(type => Cliente, cliente => cliente.corretora, { eager: true })
+  @OneToMany(type => Cliente, cliente => cliente.corretora)
   clientes: Cliente[]
-  @OneToMany(type => Operadora, operadora => operadora.corretora, { eager: true })
+  @OneToMany(type => Operadora, operadora => operadora.corretora)
   operadoras: Operadora[]
-  @OneToMany(type => TipoContrato, tipoContrato => tipoContrato.corretora, { eager: true })
+  @OneToMany(type => TipoContrato, tipoContrato => tipoContrato.corretora)
   tiposContrato: TipoContrato[]
-  @OneToMany(type => ClasseContrato, classeContrato => classeContrato.corretora, { eager: true })
+  @OneToMany(type => ClasseContrato, classeContrato => classeContrato.corretora)
   classesContrato: ClasseContrato[]
-  @OneToMany(type => TipoPagamento, tipoPagamento => tipoPagamento.corretora, { eager: true })
+  @OneToMany(type => TipoPagamento, tipoPagamento => tipoPagamento.corretora)
   tiposPagamento: TipoPagamento[]
-  @OneToMany(type => Usuario, usuario => usuario.corretora, { eager: true })
+  @OneToMany(type => Usuario, usuario => usuario.corretora)
   usuarios: Usuario[];
-  @OneToMany(type => Administradora, administradora => administradora.corretora, { eager: true })
+  @OneToMany(type => Administradora, administradora => administradora.corretora)
   administradoras: Administradora[];
-  @OneToMany(type => TipoComissao, tipoComissao => tipoComissao.corretora, { eager: true })
+  @OneToMany(type => TipoComissao, tipoComissao => tipoComissao.corretora)
   tiposComissao: TipoComissao[];
+  @OneToMany(type => Boleto, boleto => boleto.corretora)
+  boletos: Boleto[];
 
 }

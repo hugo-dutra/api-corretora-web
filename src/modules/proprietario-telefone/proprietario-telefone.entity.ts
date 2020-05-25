@@ -7,6 +7,6 @@ export class ProprietarioTelefone extends BaseEntity {
   id: number;
   @Column({ length: 300, nullable: false, name: 'pte_nome_txt' })
   nome: string;
-  @OneToMany(type => Telefone, telefone => telefone.proprietarioTelefone, { eager: true })
+  @OneToMany(type => Telefone, telefone => telefone.proprietarioTelefone)
   telefones: Telefone[];
 }

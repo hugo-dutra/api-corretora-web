@@ -10,14 +10,14 @@ export class Telefone extends BaseEntity {
   @Column({ length: 25, nullable: false, name: 'tlf_telefone_txt' })
   telefone: string;
   @Column({ nullable: false, name: 'tlf_whatsapp_bin', default: false })
-  tlf_whatsapp: Boolean;
+  whatsapp: Boolean;
   @Column({ name: 'tlf_observacao_txt' })
-  tlf_observacao: string;
+  observacao: string;
   /* RELACIONAMENTOS */
-  @ManyToOne(type => Cliente, cliente => cliente.telefones, { eager: false })
+  @ManyToOne(type => Cliente, cliente => cliente.telefones)
   @JoinColumn({ name: 'clt_id_int' })
   cliente: Cliente;
-  @ManyToOne(type => ProprietarioTelefone, proprietarioTelefone => proprietarioTelefone.telefones, { eager: false })
+  @ManyToOne(type => ProprietarioTelefone, proprietarioTelefone => proprietarioTelefone.telefones)
   @JoinColumn({ name: 'pte_id_int' })
   proprietarioTelefone: ProprietarioTelefone;
 }

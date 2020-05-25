@@ -8,9 +8,9 @@ export class ModalidadePlano extends BaseEntity {
   id: number;
   @Column({ length: 250, nullable: false, name: 'mop_nome_txt' })
   nome: string
-  @ManyToOne(type => Operadora, operadora => operadora.modalidadesPlano, { eager: false })
+  @ManyToOne(type => Operadora, operadora => operadora.modalidadesPlano)
   @JoinColumn({ name: 'ope_id_int' })
   operadora: Operadora
-  @OneToMany(type => Contrato, contrato => contrato.modalidadePlano, { eager: true })
+  @OneToMany(type => Contrato, contrato => contrato.modalidadePlano)
   contratos: Contrato[]
 }

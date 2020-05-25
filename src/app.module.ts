@@ -23,6 +23,8 @@ import { PerfilPermissaoModule } from './modules/perfil-permissao/perfil-permiss
 import { AdministradoraModule } from './modules/administradora/administradora.module';
 import { ComissaoModule } from './modules/comissao/comissao.module';
 import { TipoComissaoModule } from './modules/tipo-comissao/tipo-comissao.module';
+import { BoletoModule } from './modules/boleto/boleto.module';
+import { SecurityModule } from './shared/security/security.module';
 
 @Module({
   imports: [
@@ -46,6 +48,8 @@ import { TipoComissaoModule } from './modules/tipo-comissao/tipo-comissao.module
     PerfilPermissaoModule,
     AdministradoraModule,
     ComissaoModule,
-    TipoComissaoModule],
+    TipoComissaoModule,
+    BoletoModule,
+    SecurityModule],
 })
 export class AppModule { }

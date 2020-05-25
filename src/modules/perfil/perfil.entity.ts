@@ -9,9 +9,9 @@ export class Perfil extends BaseEntity {
   id: number;
   @Column({ length: 250, nullable: false, name: 'per_nome_txt' })
   nome: string;
-  @OneToMany(type => Usuario, usuario => usuario.perfil, { eager: true })
+  @OneToMany(type => Usuario, usuario => usuario.perfil)
   usuarios: Usuario[];
-  @OneToMany(type => PerfilPermissao, perfilPermissao => perfilPermissao.perfil, { eager: false })
+  @OneToMany(type => PerfilPermissao, perfilPermissao => perfilPermissao.perfil)
   perfisPermissoes: PerfilPermissao[];
 
 

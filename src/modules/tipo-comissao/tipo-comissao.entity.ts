@@ -8,13 +8,13 @@ export class TipoComissao extends BaseEntity {
   @PrimaryGeneratedColumn({ name: 'tco_id_int' })
   id: number;
   @Column({ name: 'tco_nome_txt', length: 50, nullable: false })
-  tco_nome: string;
+  nome: string;
   @Column({ name: 'tco_percentual_assocido_num', nullable: false })
-  tco_percentual_assocido: number;
+  percentual_assocido: number;
   /* RELACIONAMENTOS */
-  @OneToMany(type => Comissao, comissao => comissao.tipoComissao, { eager: false })
+  @OneToMany(type => Comissao, comissao => comissao.tipoComissao)
   comissoes: Comissao[];
-  @ManyToOne(type => Corretora, corretora => corretora.tiposComissao, { eager: false })
+  @ManyToOne(type => Corretora, corretora => corretora.tiposComissao)
   @JoinColumn({ name: 'cta_id_int' })
   corretora: Corretora;
 

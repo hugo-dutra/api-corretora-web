@@ -13,7 +13,7 @@ export class CorretoraController {
    * @param corretoraDto Objeto a ser gravado
    */
   @Post()
-  public novaCorretora(@Body(ValidationPipe) corretoraDto: CorretoraDto): Promise<Corretora> {
+  public inserir(@Body(ValidationPipe) corretoraDto: CorretoraDto): Promise<Corretora> {
     return new Promise((resolve, reject) => {
       this.corretoraService.inserirCorretora(corretoraDto).then((corretora: Corretora) => {
         resolve(corretora);
@@ -28,7 +28,7 @@ export class CorretoraController {
    * @param id Id da corretora
    */
   @Get('/:id')
-  public listarDadosCorretoraPorId(@Param('id') id: number): Promise<Corretora> {
+  public listarPorId(@Param('id') id: number): Promise<Corretora> {
     return this.corretoraService.listarDadosCorretoraPorId(id);
   }
 
@@ -38,7 +38,7 @@ export class CorretoraController {
    * @param corretoraDto Objeto a ser gravado
    */
   @Patch('/:id')
-  public alterarCorretora(@Param('id') id: number, @Body(ValidationPipe) corretoraDto: CorretoraDto): Promise<Corretora> {
+  public alterar(@Param('id') id: number, @Body(ValidationPipe) corretoraDto: CorretoraDto): Promise<Corretora> {
     return this.corretoraService.alterarCorretora(id, corretoraDto);
   }
 
@@ -47,7 +47,7 @@ export class CorretoraController {
    * @param id Id da corretora
    */
   @Delete('/:id')
-  public apagarCorretora(@Param('id') id: number): Promise<DeleteResult> {
+  public excluir(@Param('id') id: number): Promise<DeleteResult> {
     return this.corretoraService.apagarCorretora(id);
   }
 

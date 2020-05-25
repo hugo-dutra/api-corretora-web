@@ -7,6 +7,6 @@ export class Permissao extends BaseEntity {
   id: number;
   @Column({ length: 250, nullable: false, name: 'prm_nome_txt' })
   nome: string;
-  @OneToMany(type => PerfilPermissao, perfilPermissao => perfilPermissao.permissao, { eager: false })
+  @OneToMany(type => PerfilPermissao, perfilPermissao => perfilPermissao.permissao)
   perfisPermissoes: PerfilPermissao[];
 }

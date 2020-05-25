@@ -8,14 +8,14 @@ export class Comissao extends BaseEntity {
   @PrimaryGeneratedColumn({ name: 'cms_id_int' })
   id: number;
   @Column({ name: 'cms_valor_num', nullable: false })
-  cms_valor: number;
+  valor: number;
   @Column({ name: 'cms_data_faturamento_dte' })
-  cms_data_faturamento: Date;
+  data_faturamento: Date;
   /* RELACIONAMENTOS */
-  @ManyToOne(type => Contrato, contrato => contrato.comissoes, { eager: false })
+  @ManyToOne(type => Contrato, contrato => contrato.comissoes)
   @JoinColumn({ name: 'ctr_id_int' })
   contrato: Contrato;
-  @ManyToOne(type => TipoComissao, tipoComissao => tipoComissao.comissoes, { eager: false })
+  @ManyToOne(type => TipoComissao, tipoComissao => tipoComissao.comissoes)
   @JoinColumn({ name: 'tco_id_int' })
   tipoComissao: TipoComissao;
 }

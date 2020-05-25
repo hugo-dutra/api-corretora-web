@@ -10,10 +10,10 @@ export class Administradora extends BaseEntity {
   @Column({ name: 'adm_nome_txt', length: 250, nullable: false })
   nome: string;
   /* RELACIONAMENTOS */
-  @ManyToOne(type => Corretora, corretora => corretora.administradoras, { eager: false })
+  @ManyToOne(type => Corretora, corretora => corretora.administradoras)
   @JoinColumn({ name: 'cta_id_int' })
   corretora: Corretora;
-  @OneToMany(type => Contrato, contrato => contrato.administradora, { eager: true })
+  @OneToMany(type => Contrato, contrato => contrato.administradora)
   contratos: Contrato[];
 
 }

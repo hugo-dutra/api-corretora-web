@@ -16,34 +16,34 @@ export class Contrato extends BaseEntity {
   @Column({ name: 'ctr_valor_num' })
   valor: number;
   @Column({ name: 'ctr_numero_contrato_txt' })
-  ctr_numero_contrato: string;
+  numero_contrato: string;
   @Column({ name: 'ctr_inicio_vigencia_dte' })
-  ctr_inicio_vigencia: Date;
+  inicio_vigencia: Date;
   @Column({ name: 'ctr_valor_desconto_num' })
-  ctr_valor_desconto: number;
+  valor_desconto: number;
   @Column({ name: 'ctr_data_assinatura_contrato_dte' })
-  ctr_data_assinatura_contrato: Date;
+  data_assinatura_contrato: Date;
   /* RELACIONAMENTOS */
-  @ManyToOne(type => Usuario, usuario => usuario.contratos, { eager: false })
+  @ManyToOne(type => Usuario, usuario => usuario.contratos)
   @JoinColumn({ name: 'usr_id_int' })
   usuario: Usuario;
-  @ManyToOne(Type => ModalidadePlano, modalidadePlano => modalidadePlano.contratos, { eager: false })
+  @ManyToOne(Type => ModalidadePlano, modalidadePlano => modalidadePlano.contratos)
   @JoinColumn({ name: 'mop_id_int' })
   modalidadePlano: ModalidadePlano;
-  @ManyToOne(type => Cliente, cliente => cliente.contratos, { eager: false })
+  @ManyToOne(type => Cliente, cliente => cliente.contratos)
   @JoinColumn({ name: 'clt_id_int' })
   cliente: Cliente;
-  @ManyToOne(type => TipoContrato, tipoContrato => tipoContrato.contratos, { eager: false })
+  @ManyToOne(type => TipoContrato, tipoContrato => tipoContrato.contratos)
   @JoinColumn({ name: 'tco_id_int' })
   tipoContrato: TipoContrato;
-  @ManyToOne(type => ClasseContrato, classeContrato => classeContrato.contratos, { eager: false })
+  @ManyToOne(type => ClasseContrato, classeContrato => classeContrato.contratos)
   @JoinColumn({ name: 'clc_id_int' })
   classeContrato: ClasseContrato;
-  @ManyToOne(type => Administradora, administradora => administradora.contratos, { eager: false })
+  @ManyToOne(type => Administradora, administradora => administradora.contratos)
   @JoinColumn({ name: 'adm_id_int' })
   administradora: Administradora;
-  @OneToMany(type => ParcelaContrato, parcelaContrato => parcelaContrato.contrato, { eager: true })
+  @OneToMany(type => ParcelaContrato, parcelaContrato => parcelaContrato.contrato)
   parcelasContrato: ParcelaContrato[];
-  @OneToMany(type => Comissao, comissao => comissao.contrato, { eager: true })
+  @OneToMany(type => Comissao, comissao => comissao.contrato)
   comissoes: Comissao[];
 }

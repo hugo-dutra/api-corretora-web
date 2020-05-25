@@ -8,9 +8,9 @@ export class Operadora extends BaseEntity {
   id: number;
   @Column({ length: 250, nullable: false, name: 'ope_nome_txt' })
   nome: string;
-  @ManyToOne(type => Corretora, corretora => corretora.operadoras, { eager: false })
+  @ManyToOne(type => Corretora, corretora => corretora.operadoras)
   @JoinColumn({ name: 'cta_id_int' })
   corretora: Corretora
-  @OneToMany(type => ModalidadePlano, modalidadePlano => modalidadePlano.operadora, { eager: true })
+  @OneToMany(type => ModalidadePlano, modalidadePlano => modalidadePlano.operadora)
   modalidadesPlano: ModalidadePlano[]
 }

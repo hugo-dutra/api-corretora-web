@@ -9,11 +9,11 @@ export class TipoContrato extends BaseEntity {
   id: number;
   @Column({ length: 250, nullable: false, name: 'tco_nome_txt' })
   nome: string;
-  @OneToMany(type => Contrato, contrato => contrato.tipoContrato, { eager: true })
+  @OneToMany(type => Contrato, contrato => contrato.tipoContrato)
   contratos: Contrato[]
-  @OneToMany(type => ClasseContrato, classeContrato => classeContrato.tiposContratos, { eager: true })
+  @OneToMany(type => ClasseContrato, classeContrato => classeContrato.tiposContratos)
   classeContrato: ClasseContrato;
-  @ManyToOne(type => Corretora, corretora => corretora.tiposContrato, { eager: false })
+  @ManyToOne(type => Corretora, corretora => corretora.tiposContrato)
   @JoinColumn({ name: 'ctr_id_int' })
   corretora: Corretora
 }
