@@ -17,15 +17,20 @@ export class Usuario extends BaseEntity {
   senha: string;
   @Column({ length: 250, nullable: false, name: 'usr_salt_txt' })
   salt: string;
+  @Column({ nullable: false, name: 'per_id_int' })
+  per_id: number;
+  @Column({ nullable: false, name: 'cta_id_int' })
+  cta_id: number;
   /* RELACIONAMENTOS */
-  @OneToMany(type => Cliente, cliente => cliente.usuario)
-  clientes: Cliente[];
   @ManyToOne(type => Perfil, perfil => perfil.usuarios)
   @JoinColumn({ name: 'per_id_int' })
   perfil: Perfil;
-  @OneToMany(type => Contrato, contrato => contrato.usuario)
-  contratos: Contrato[]
   @ManyToOne(type => Corretora, corretora => corretora.usuarios)
   @JoinColumn({ name: 'cta_id_int' })
   corretora: Corretora;
+  @OneToMany(type => Contrato, contrato => contrato.usuario)
+  contratos: Contrato[]
+  @OneToMany(type => Cliente, cliente => cliente.usuario)
+  clientes: Cliente[];
+
 }

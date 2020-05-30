@@ -1,7 +1,6 @@
 import { Controller, Get, Param, Post, Body, ValidationPipe, Delete, Patch } from '@nestjs/common';
 import { Corretora } from './corretora.entity';
 import { CorretoraService } from './corretora.service';
-import { CorretoraDto } from './dto/corretora.dto';
 import { DeleteResult } from 'typeorm';
 
 @Controller('corretora')
@@ -10,17 +9,11 @@ export class CorretoraController {
 
   /**
    * Nova corretora
-   * @param corretoraDto Objeto a ser gravado
+   * @param corretora Objeto a ser gravado
    */
   @Post()
-  public inserir(@Body(ValidationPipe) corretoraDto: CorretoraDto): Promise<Corretora> {
-    return new Promise((resolve, reject) => {
-      this.corretoraService.inserirCorretora(corretoraDto).then((corretora: Corretora) => {
-        resolve(corretora);
-      }).catch((reason: any) => {
-        reject(reason);
-      });
-    });
+  public inserir(@Body() corretora: Corretora): Promise<Corretora> {
+    return this.corretoraService.inserir(corretora);
   }
 
   /**
@@ -29,17 +22,17 @@ export class CorretoraController {
    */
   @Get('/:id')
   public listarPorId(@Param('id') id: number): Promise<Corretora> {
-    return this.corretoraService.listarDadosCorretoraPorId(id);
+    return this.corretoraService.listarDadosPorId(id);
   }
 
   /**
    * Altera os dados da corretora
    * @param id Id da corretora
-   * @param corretoraDto Objeto a ser gravado
+   * @param corretora Objeto a ser gravado
    */
   @Patch('/:id')
-  public alterar(@Param('id') id: number, @Body(ValidationPipe) corretoraDto: CorretoraDto): Promise<Corretora> {
-    return this.corretoraService.alterarCorretora(id, corretoraDto);
+  public alterar(@Param('id') id: number, @Body() corretora: Corretora): Promise<Corretora> {
+    return this.corretoraService.alterar(corretora);
   }
 
   /**
@@ -48,14 +41,7 @@ export class CorretoraController {
    */
   @Delete('/:id')
   public excluir(@Param('id') id: number): Promise<DeleteResult> {
-    return this.corretoraService.apagarCorretora(id);
+    return this.corretoraService.apagar(id);
   }
 
-  /**
-   *Método recuperar todas as corretoras. Referência de consulta
-   */
-  /* @Get()
-  public listarCorretoras(): Promise<Corretora[]> {
-    return this.corretoraService.listarCorretoras()
-  } */
 }
