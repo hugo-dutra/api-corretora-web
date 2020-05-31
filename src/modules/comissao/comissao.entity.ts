@@ -11,11 +11,15 @@ export class Comissao extends BaseEntity {
   valor: number;
   @Column({ name: 'cms_data_faturamento_dte' })
   data_faturamento: Date;
+  @Column({ name: 'ctr_id_int' })
+  ctr_id: number;
+  @Column({ name: 'tcm_id_int' })
+  tcm_id: number;
   /* RELACIONAMENTOS */
   @ManyToOne(type => Contrato, contrato => contrato.comissoes)
   @JoinColumn({ name: 'ctr_id_int' })
   contrato: Contrato;
   @ManyToOne(type => TipoComissao, tipoComissao => tipoComissao.comissoes)
-  @JoinColumn({ name: 'tco_id_int' })
+  @JoinColumn({ name: 'tcm_id_int' })
   tipoComissao: TipoComissao;
 }
