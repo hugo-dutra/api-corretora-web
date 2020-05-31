@@ -8,6 +8,7 @@ import { Operadora } from "../operadora/operadora.entity";
 import { Usuario } from '../usuario/usuario.entity';
 import { Administradora } from '../administradora/administradora.entity';
 import { Boleto } from '../boleto/boleto.entity';
+import { Perfil } from '../perfil/perfil.entity';
 
 @Entity('corretora_cta')
 export class Corretora extends BaseEntity {
@@ -39,5 +40,7 @@ export class Corretora extends BaseEntity {
   tiposComissao: TipoComissao[];
   @OneToMany(type => Boleto, boleto => boleto.corretora)
   boletos: Boleto[];
+  @OneToMany(type => Perfil, perfil => perfil.corretora)
+  perfis: Perfil[];
 
 }
