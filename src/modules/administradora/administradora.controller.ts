@@ -19,13 +19,11 @@ export class AdministradoraController {
 
   @Patch()
   public alterar(@Body() administradora: Administradora): Promise<Administradora> {
-    console.log(administradora);
-    return null;//this.administradoraService.alterar(administradora);
+    return this.administradoraService.alterar(administradora);
   }
 
   @Delete()
   public excluir(@Body() id: number): Promise<DeleteResult> {
-    console.log(id);
-    return null;//this.administradoraService.excluir(id);
+    return this.administradoraService.excluir(id);
   }
 }
