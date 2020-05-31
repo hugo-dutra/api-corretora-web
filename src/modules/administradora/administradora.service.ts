@@ -37,6 +37,7 @@ export class AdministradoraService {
       this.administradoraRepository.createQueryBuilder('adm')
         .select(campos)
         .where('adm.cta_id_int = :cta_id', { cta_id: cta_id })
+        .orderBy('adm.adm_nome_txt', 'ASC')
         .execute()
         .then((administradoras: Administradora[]) => {
           resolve(administradoras);

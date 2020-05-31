@@ -8,6 +8,8 @@ export class Operadora extends BaseEntity {
   id: number;
   @Column({ length: 250, nullable: false, name: 'ope_nome_txt' })
   nome: string;
+  @Column({ nullable: false, name: 'cta_id_int' })
+  cta_id: string;
   @ManyToOne(type => Corretora, corretora => corretora.operadoras)
   @JoinColumn({ name: 'cta_id_int' })
   corretora: Corretora
