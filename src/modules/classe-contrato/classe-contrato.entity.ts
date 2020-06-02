@@ -9,6 +9,10 @@ export class ClasseContrato extends BaseEntity {
   id: number;
   @Column({ length: 250, nullable: false, name: 'clc_nome_txt' })
   nome: string;
+  @Column({ nullable: false, name: 'tco_id_int' })
+  tco_id: string;
+  @Column({ nullable: false, name: 'cta_id_int' })
+  cta_id: string;
   @ManyToOne(type => TipoContrato, tipoContrato => tipoContrato.classeContrato)
   @JoinColumn({ name: 'tco_id_int' })
   tiposContratos: TipoContrato[];
