@@ -9,6 +9,8 @@ export class TipoPagamento extends BaseEntity {
   id: number;
   @Column({ length: 250, nullable: false, name: 'tip_nome_txt' })
   nome: string;
+  @Column({ nullable: false, name: 'cta_id_int' })
+  cta_id: number;
   /* RELACIONAMENTOS */
   @OneToMany(type => ParcelaContrato, parcelaContrato => parcelaContrato.tipoPagamento)
   parcelasContrato: ParcelaContrato[]
