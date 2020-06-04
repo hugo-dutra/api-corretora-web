@@ -17,6 +17,11 @@ export class ClienteController {
     return this.clienteService.listar(cta_id);
   }
 
+  @Get('filtrar/:cta_id/:texto')
+  public filtrar(@Param('cta_id') cta_id: number, @Param('texto') texto: string): Promise<any[]> {
+    return this.clienteService.filtrar(cta_id, texto);
+  }
+
   @Patch()
   public alterar(@Body() cliente: Cliente): Promise<Cliente> {
     return this.clienteService.alterar(cliente);

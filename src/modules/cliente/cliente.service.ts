@@ -54,6 +54,37 @@ export class ClienteService {
     });
   }
 
+  public filtrar(cta_id: number, texto: string): Promise<any[]> {
+    return new Promise((resolve, reject) => {
+      const campos = [
+        'clt.clt_id_int as id, ' +
+        'cta.cta_id_int as cta_id, ' +
+        'cta.cta_nome_txt as cta_nome, ' +
+        'clt.clt_cep_txt as cep, ' +
+        'clt.clt_endereco_txt as endereco, ' +
+        'clt.clt_cidade_txt as cidade, ' +
+        'clt.clt_uf_txt as uf, ' +
+        'clt.clt_email_txt as email, ' +
+        'usr.usr_id_int as usr_id, ' +
+        'usr.usr_nome_txt as usr_nome, ' +
+        'clt.clt_nome_txt as nome, ' +
+        'clt.clt_cpf_cnpj_txt as cpf_cnpj'
+      ];
+      this.clienteRepositoty.createQueryBuilder('clt').select(campos)
+        .innerJoin('clt.usuario', 'usr')
+        .innerJoin('clt.corretora', 'cta')
+        .where('cta.cta_id_int = :cta_id', { cta_id: cta_id })
+        .andWhere('LOWER(clt.clt_nome_txt) like LOWER(:texto)', { texto: `%${texto}%` })
+        .orderBy('clt.clt_nome_txt', 'ASC')
+        .execute()
+        .then(clientes => {
+          resolve(clientes);
+        }).catch(reason => {
+          reject(reason);
+        });
+    })
+  }
+
   public alterar(cliente: Cliente): Promise<Cliente> {
     return new Promise((resolve, reject) => {
       this.clienteRepositoty.save(cliente).then(novoCliente => {
