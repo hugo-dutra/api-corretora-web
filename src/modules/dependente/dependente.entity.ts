@@ -14,6 +14,8 @@ export class Dependente extends BaseEntity {
   email: string;
   @Column({ name: 'dpd_cpf_txt', length: 50 })
   cpf: string;
+  @Column({ name: 'bnf_id_int' })
+  bnf_id: number;
   /* RELACIONAMENTOS */
   @ManyToOne(type => Beneficiario, beneficiario => beneficiario.dependentes)
   @JoinColumn({ name: 'bnf_id_int' })

@@ -38,7 +38,8 @@ export class ClienteService {
         'usr.usr_id_int as usr_id, ' +
         'usr.usr_nome_txt as usr_nome, ' +
         'clt.clt_nome_txt as nome, ' +
-        'clt.clt_cpf_cnpj_txt as cpf_cnpj'
+        'clt.clt_cpf_cnpj_txt as cpf_cnpj,' +
+        'clt.clt_pessoa_fisica as pessoa_fisica'
       ];
       this.clienteRepositoty.createQueryBuilder('clt').select(campos)
         .innerJoin('clt.usuario', 'usr')
@@ -68,7 +69,8 @@ export class ClienteService {
         'usr.usr_id_int as usr_id, ' +
         'usr.usr_nome_txt as usr_nome, ' +
         'clt.clt_nome_txt as nome, ' +
-        'clt.clt_cpf_cnpj_txt as cpf_cnpj'
+        'clt.clt_cpf_cnpj_txt as cpf_cnpj, ' +
+        'clt.clt_pessoa_fisica as pessoa_fisica'
       ];
       this.clienteRepositoty.createQueryBuilder('clt').select(campos)
         .innerJoin('clt.usuario', 'usr')

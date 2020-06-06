@@ -25,6 +25,8 @@ export class Cliente extends BaseEntity {
   email: string;
   @Column({ name: 'clt_cpf_cnpj_txt', length: 50 })
   cpf_cnpj: string;
+  @Column({ name: 'clt_pessoa_fisica', default: true })
+  pessoa_fisica: boolean;
   @Column({ name: 'usr_id_int' })
   usr_id: number;
   @Column({ name: 'cta_id_int' })
