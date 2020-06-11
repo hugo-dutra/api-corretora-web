@@ -1,5 +1,4 @@
 import { Administradora } from './../administradora/administradora.entity';
-import { ParcelaContrato } from './../parcela-contrato/parcela-contrato.entity';
 import { ClasseContrato } from './../classe-contrato/classe-contrato.entity';
 import { ModalidadePlano } from './../modalidade-plano/modalidade-plano.entity';
 import { BaseEntity, Entity, PrimaryGeneratedColumn, Column, ManyToOne, OneToMany, JoinColumn } from "typeorm";
@@ -23,6 +22,18 @@ export class Contrato extends BaseEntity {
   valor_desconto: number;
   @Column({ name: 'ctr_data_assinatura_contrato_dte' })
   data_assinatura_contrato: Date;
+  @Column({ name: 'usr_id_int' })
+  usr_id: number;
+  @Column({ name: 'mop_id_int' })
+  mop_id: number;
+  @Column({ name: 'clt_id_int' })
+  clt_id: number;
+  @Column({ name: 'tco_id_int' })
+  tco_id: number;
+  @Column({ name: 'clc_id_int' })
+  clc_id: number;
+  @Column({ name: 'adm_id_int' })
+  adm_id: number;
   /* RELACIONAMENTOS */
   @ManyToOne(type => Usuario, usuario => usuario.contratos)
   @JoinColumn({ name: 'usr_id_int' })
@@ -42,8 +53,6 @@ export class Contrato extends BaseEntity {
   @ManyToOne(type => Administradora, administradora => administradora.contratos)
   @JoinColumn({ name: 'adm_id_int' })
   administradora: Administradora;
-  @OneToMany(type => ParcelaContrato, parcelaContrato => parcelaContrato.contrato)
-  parcelasContrato: ParcelaContrato[];
   @OneToMany(type => Comissao, comissao => comissao.contrato)
   comissoes: Comissao[];
 }

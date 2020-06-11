@@ -1,3 +1,4 @@
+import { TipoPagamento } from './../tipo-pagamento/tipo-pagamento.entity';
 import { TipoComissao } from './../tipo-comissao/tipo-comissao.entity';
 import { BaseEntity, Entity, EntityRepository, PrimaryGeneratedColumn, Column, ManyToOne, JoinColumn } from "typeorm";
 import { Contrato } from "../contrato/contrato.entity";
@@ -15,6 +16,8 @@ export class Comissao extends BaseEntity {
   ctr_id: number;
   @Column({ name: 'tcm_id_int' })
   tcm_id: number;
+  @Column({ name: 'tip_id_int' })
+  tip_id: number;
   /* RELACIONAMENTOS */
   @ManyToOne(type => Contrato, contrato => contrato.comissoes)
   @JoinColumn({ name: 'ctr_id_int' })
@@ -22,4 +25,7 @@ export class Comissao extends BaseEntity {
   @ManyToOne(type => TipoComissao, tipoComissao => tipoComissao.comissoes)
   @JoinColumn({ name: 'tcm_id_int' })
   tipoComissao: TipoComissao;
+  @ManyToOne(type => TipoPagamento, tipoPagamento => tipoPagamento.comissoes)
+  @JoinColumn({ name: 'tip_id_int' })
+  tipoPagamento: TipoPagamento;
 }

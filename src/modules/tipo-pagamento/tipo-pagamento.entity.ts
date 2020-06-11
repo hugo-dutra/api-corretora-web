@@ -1,6 +1,6 @@
-import { ParcelaContrato } from './../parcela-contrato/parcela-contrato.entity';
 import { BaseEntity, Entity, PrimaryGeneratedColumn, Column, OneToMany, ManyToMany, ManyToOne, JoinColumn } from "typeorm";
 import { Corretora } from '../corretora/corretora.entity';
+import { Comissao } from "../comissao/comissao.entity";
 
 @Entity('tipo_pagamento_tip')
 export class TipoPagamento extends BaseEntity {
@@ -12,9 +12,10 @@ export class TipoPagamento extends BaseEntity {
   @Column({ nullable: false, name: 'cta_id_int' })
   cta_id: number;
   /* RELACIONAMENTOS */
-  @OneToMany(type => ParcelaContrato, parcelaContrato => parcelaContrato.tipoPagamento)
-  parcelasContrato: ParcelaContrato[]
   @ManyToOne(type => Corretora, corretora => corretora.tiposPagamento)
   @JoinColumn({ name: 'cta_id_int' })
   corretora: Corretora;
+  @OneToMany(type => Comissao, comissao => comissao.tipoPagamento)
+  comissoes: Comissao[];
+
 }
