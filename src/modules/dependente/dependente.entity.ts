@@ -1,5 +1,6 @@
+import { TelefoneDependente } from './../telefone-dependente/telefone-dependente.entity';
 import { Beneficiario } from '../beneficiario/beneficiario.entity';
-import { BaseEntity, Entity, PrimaryGeneratedColumn, Column, ManyToOne, JoinColumn } from "typeorm";
+import { BaseEntity, Entity, PrimaryGeneratedColumn, Column, ManyToOne, JoinColumn, OneToMany } from "typeorm";
 
 @Entity('dependente_dpd')
 export class Dependente extends BaseEntity {
@@ -20,4 +21,6 @@ export class Dependente extends BaseEntity {
   @ManyToOne(type => Beneficiario, beneficiario => beneficiario.dependentes)
   @JoinColumn({ name: 'bnf_id_int' })
   beneficiario: Beneficiario;
+  @OneToMany(type => TelefoneDependente, telefoneDependente => telefoneDependente.dependente)
+  telefones: TelefoneDependente[];
 }

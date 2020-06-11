@@ -1,6 +1,6 @@
 import { Beneficiario } from '../beneficiario/beneficiario.entity';
 import { BaseEntity, PrimaryGeneratedColumn, Column, Entity, OneToMany, ManyToOne, JoinColumn } from "typeorm";
-import { Telefone } from '../telefone/telefone.entity';
+import { TelefoneCliente } from '../telefone-cliente/telefone-cliente.entity';
 import { Corretora } from '../corretora/corretora.entity';
 import { Contrato } from '../contrato/contrato.entity';
 import { Usuario } from '../usuario/usuario.entity';
@@ -40,8 +40,8 @@ export class Cliente extends BaseEntity {
   corretora: Corretora;
   @OneToMany(type => Beneficiario, beneficiario => beneficiario.cliente)
   beneficiarios: Beneficiario[]
-  @OneToMany(type => Telefone, telefone => telefone.cliente)
-  telefones: Telefone[];
+  @OneToMany(type => TelefoneCliente, telefone => telefone.cliente)
+  telefones: TelefoneCliente[];
   @OneToMany(type => Contrato, contrato => contrato.cliente)
   contratos: Contrato[];
 

@@ -6,8 +6,7 @@ import { typeOrmConfig } from './config/typeorm.config';
 import { ClienteModule } from './modules/cliente/cliente.module';
 import { BeneficiarioModule } from './modules/beneficiario/beneficiario.module';
 import { DependenteModule } from './modules/dependente/dependente.module';
-import { TelefoneModule } from './modules/telefone/telefone.module';
-import { ProprietarioTelefoneModule } from './modules/proprietario-telefone/proprietario-telefone.module';
+import { TelefoneModule } from './modules/telefone-cliente/telefone-cliente.module';
 import { UsuarioModule } from './modules/usuario/usuario.module';
 import { PerfilModule } from './modules/perfil/perfil.module';
 import { PermissaoModule } from './modules/permissao/permissao.module';
@@ -25,6 +24,8 @@ import { ComissaoModule } from './modules/comissao/comissao.module';
 import { TipoComissaoModule } from './modules/tipo-comissao/tipo-comissao.module';
 import { BoletoModule } from './modules/boleto/boleto.module';
 import { SecurityModule } from './shared/security/security.module';
+import { TelefoneBeneficiarioModule } from './modules/telefone-beneficiario/telefone-beneficiario.module';
+import { TelefoneDependenteModule } from './modules/telefone-dependente/telefone-dependente.module';
 
 @Module({
   imports: [
@@ -33,7 +34,6 @@ import { SecurityModule } from './shared/security/security.module';
     BeneficiarioModule,
     DependenteModule,
     TelefoneModule,
-    ProprietarioTelefoneModule,
     UsuarioModule,
     PerfilModule,
     PermissaoModule,
@@ -50,6 +50,8 @@ import { SecurityModule } from './shared/security/security.module';
     ComissaoModule,
     TipoComissaoModule,
     BoletoModule,
-    SecurityModule],
+    SecurityModule,
+    TelefoneBeneficiarioModule,
+    TelefoneDependenteModule],
 })
 export class AppModule { }
