@@ -29,10 +29,11 @@ export class TelefoneBeneficiarioService {
   }
 
   public excluir(bnf_id: number): Promise<DeleteResult> {
+    const id = bnf_id['id'];
     return new Promise((resolve, reject) => {
       this.telefoneBeneficiarioRepository.createQueryBuilder()
         .delete()
-        .where('bnf_id_int = :bnf_id', { bnf_id: bnf_id })
+        .where('bnf_id_int = :bnf_id', { bnf_id: id })
         .execute()
         .then(deleteResult => {
           resolve(deleteResult);
