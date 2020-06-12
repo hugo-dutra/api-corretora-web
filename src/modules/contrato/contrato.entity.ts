@@ -12,13 +12,13 @@ export class Contrato extends BaseEntity {
   /* CAMPOS */
   @PrimaryGeneratedColumn({ name: 'ctr_id_int' })
   id: number;
-  @Column({ name: 'ctr_valor_num' })
+  @Column({ name: 'ctr_valor_num', type: 'float4' })
   valor: number;
   @Column({ name: 'ctr_numero_contrato_txt' })
   numero_contrato: string;
   @Column({ name: 'ctr_inicio_vigencia_dte' })
   inicio_vigencia: Date;
-  @Column({ name: 'ctr_valor_desconto_num' })
+  @Column({ name: 'ctr_valor_desconto_num', type: 'float4' })
   valor_desconto: number;
   @Column({ name: 'ctr_data_assinatura_contrato_dte' })
   data_assinatura_contrato: Date;

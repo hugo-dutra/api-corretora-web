@@ -8,7 +8,7 @@ export class Comissao extends BaseEntity {
   /* CAMPOS */
   @PrimaryGeneratedColumn({ name: 'cms_id_int' })
   id: number;
-  @Column({ name: 'cms_valor_num', nullable: false })
+  @Column({ name: 'cms_valor_num', nullable: false, type: 'float4' })
   valor: number;
   @Column({ name: 'cms_data_faturamento_dte' })
   data_faturamento: Date;
