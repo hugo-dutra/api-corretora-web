@@ -17,6 +17,11 @@ export class ClasseContratoController {
     return this.classeContratoService.listar(cta_id);
   }
 
+  @Get('/tipo-contrato/:tco_id')
+  public listarPorTipoDeContratoId(@Param('tco_id') tco_id: number): Promise<ClasseContrato[]> {
+    return this.classeContratoService.listarPorTipoDeContratoId(tco_id);
+  }
+
   @Patch()
   public alterar(@Body() administradora: ClasseContrato): Promise<ClasseContrato> {
     return this.classeContratoService.alterar(administradora);

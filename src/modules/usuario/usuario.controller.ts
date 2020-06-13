@@ -1,5 +1,5 @@
 import { UsuarioService } from './usuario.service';
-import { Controller, Post, Body } from '@nestjs/common';
+import { Controller, Post, Body, Param, Get } from '@nestjs/common';
 import { Usuario } from './usuario.entity';
 
 @Controller('usuario')
@@ -14,5 +14,10 @@ export class UsuarioController {
   @Post('/logar')
   public login(@Body() dadosLogin: any): Promise<Usuario> {
     return this.usuarioService.logarUsuario(dadosLogin);
+  }
+
+  @Get('/corretora/:cta_id')
+  public listarPorCorretoraId(@Param('cta_id') cta_id: number): Promise<any[]> {
+    return this.usuarioService.listarPorCorretoraId(cta_id);
   }
 }

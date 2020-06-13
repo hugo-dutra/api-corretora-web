@@ -56,8 +56,26 @@ export class UsuarioService {
         resolve(usuarioDto);
       }).catch(reason => {
         reject(reason);
-      })
-    })
+      });
+    });
+  }
+
+  public listarPorCorretoraId(cta_id: number): Promise<any[]> {
+    return new Promise((resolve, reject) => {
+      const campos = [
+        'usr.usr_id_int as id', 'usr.usr_nome_txt as nome',
+        'usr.usr_email_txt as email', 'usr.per_id_int as per_id',
+      ]
+      this.usuarioRepository.createQueryBuilder('usr')
+        .select(campos)
+        .where('usr.cta_id_int = :cta_id', { cta_id: cta_id })
+        .execute()
+        .then((usuarios: any[]) => {
+          resolve(usuarios);
+        }).catch(reason => {
+          reject(reason);
+        });
+    });
   }
 
   public alterar(usuario: Usuario): Promise<Usuario> {
